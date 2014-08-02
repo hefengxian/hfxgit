@@ -14,6 +14,19 @@
 			$ git config --global user.name "Your Name"
 			$ git config --global user.email "email@example.com"
 
+			
+	- Git在Windows下无法显示中文的问题，解决方案：
+		1、ls无法显示中文
+			解决办法：在git/etc/git-completion.bash中增加一行： 
+				alias ls='ls --show-control-chars --color=auto' 
+		2、git commit无法提交中文注释
+			解决办法：修改git/etc/inputrc中对应的行： 
+				set output-meta on 
+				set convert-meta off 
+		3、git log无法显示中文
+			解决方案：修改git/etc/profile文件
+				export LESSCHARSET=iso8859
+		
 三、创建版本库
 	1、创建版本库（repository）
 		$ mkdir learngit
