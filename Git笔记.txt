@@ -1,0 +1,57 @@
+一、GIT简介
+	· Git是什么？
+
+	· Git是目前世界上最先进的分布式版本控制系统（没有之一）。
+
+	· Git有什么特点？简单来说就是：高端大气上档次！
+
+
+二、Git安装
+	- Ubuntu：sudo apt-get install git
+	- Windows：http://msysgit.github.io/
+		
+		安装完成之后配置，在命令中输入：
+			$ git config --global user.name "Your Name"
+			$ git config --global user.email "email@example.com"
+
+三、创建版本库
+	1、创建版本库（repository）
+		$ mkdir learngit
+		$ cd learngit
+		$ pwd
+			-- pwd命令用于显示当前目录
+	2、通过git init命令把这个目录变成Git可以管理的仓库
+		$ git init
+		
+四、添加一个文件到版本库
+	0、在版本库创建一个文件
+	
+	1、用命令git add告诉Git，把文件添加到仓库；
+		$ git add fileName 
+			-- 可以先add多个文件，再commit
+	2、使用命令git commit，完成；
+		$ git commit -m "wrote a readme file"
+
+五、时光机穿梭
+	1、git status命令可以让我们时刻掌握仓库当前的状态
+		$ git status
+		-- 虽然Git告诉我们readme.txt被修改了，但如果能看看具体修改了什么内容，需要使用git diff命令
+	2、git diff顾名思义就是查看difference
+		$ git diff fileName
+	3、文件回退
+		- git log命令显示从最近到最远的提交日志
+			$ git log
+		- 如果嫌输出信息太多，看得眼花缭乱的，可以试试加上?--pretty=oneline参数
+			$ git log --pretty=oneline
+		
+		- 准备把readme.txt回退到上一个版本，Git必须知道当前版本是哪个版本，在Git中，用HEAD表示当前版本，上一个版本就是HEAD^，
+		上上一个版本就是HEAD^^，上一百个版本就是HEAD~100，使用git reset命令
+			$ git reset --hard HEAD^
+			-- 使用cat fileName可以查看是否返回到了上一个版本
+		- 先返回了历史版本，但是现在我又想恢复，仍然使用git reset命令，后面跟上commit id（不用输入全部，可以输入部分就可以）
+			$ git reset --hard 52d4b1
+		- 找不到新版本的commit id该怎么恢复？Git提供了一个命令git reflog用来记录你的每一次命令，可以找到commit id
+			$ git reflog
+		
+		
+	
